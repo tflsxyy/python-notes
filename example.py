@@ -2,9 +2,9 @@
 
 import os
 
-array = ["聪明", "成熟", "可爱", "漂亮", "努力"]
+array = ["聪明机智", "开朗活泼", "勇敢成熟", "可爱漂亮", "努力上进", "天生丽质", "巧笑倩兮", "美目盼兮"]
 print("cyj, 我喜欢你")
 
-for i in range(len(array)):
+for i in array:
     a = input()
-    print("%s" % (array[i]), end = "")
+    print("我喜欢你%s" % (i), end = "")
