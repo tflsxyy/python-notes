@@ -12,6 +12,10 @@
 151.101.184.133    camo.githubusercontent.com
 ```
 
-下面是我创建的学习交流群（群号：789050736），欢迎加入一起学习共同进步。
+## References
 
-<img src="https://gitee.com/jackfrued/mypic/raw/master/20211205225143.png" style="zoom:50%;">
+[1]. https://github.com/jackfrued/Python-Core-50-Courses
+
+[2]. https://github.com/jackfrued/Python-100-Days
+
+[3]. https://github.com/walter201230/Python
