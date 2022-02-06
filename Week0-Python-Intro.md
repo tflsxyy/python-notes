@@ -57,3 +57,14 @@ macOS自带了Python 2
 
 terminal偏好设置中可以更换颜色
 
+
+### 运行第一个Python程序
+
+
+### 写自己第一个Python程序 Hello World
+
+
+### Python代码规范
+参考 Google Python 代码规范
+https://google.github.io/styleguide/pyguide.html
+

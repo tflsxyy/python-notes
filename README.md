@@ -1,4 +1,4 @@
-## Python-notes
+# Python-notes
 
 针对你的法学需求开始写的一份笔记。
 
@@ -13,6 +13,7 @@
 ```
 
 也可以使用Github镜像源来代替，例如：**`github.com.cnpmjs.org`**
+我在Gitee上添加了新的仓库，国内应该可以访问：https://gitee.com/tflsxyy/python-notes
 
 ## References
 
