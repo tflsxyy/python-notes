@@ -2,7 +2,7 @@
 
 ### 为什么要学习Python
 
-其实不是必要的，只是需要学习一种解决问题的方法。经过实践，大部分人选择了Python
+其实不是说一定要学或者每个人都要学Python，我们只是需要学习一种解决问题的方法。经过实践，大部分人选择了Python
 
 ### 为什么要选Python
 
@@ -51,20 +51,57 @@ Python最主要的缺点是执行效率低，但是当我们更看重产品的�
 
 ### Mac安装Python环境
 
-macOS自带了Python 2
+macOS自带了Python 2，为了使用Python 3，我们可以从Python官网上下载对应的版本，不过我建议使用[Anaconda](https://www.anaconda.com/products/individual)来安装和管理Python版本和Python模块，同时提供了Jupyter可以交互式地使用Python。
 
 ### 终端（Terminal）
 
-terminal偏好设置中可以更换颜色
+<img src="https://help.apple.com/assets/6152754A4192845C4361C49A/6152754B4192845C4361C4A1/en_GB/d94aa1c4979b25e9ffbda97fcbae219a.png" width="10%">
 
+| 指令Command | 功能Options |
+| :---------: | :---------: |
+| **Exit** | 退出 |
+| exit|退出当前终端|
+| **Change Directory**    | 更改在文件夹中的位置 |
+| cd | 回到Home文件夹 |
+| cd ~ | 回到Home文件夹 |
+| cd .. | 进入上一层文件夹 |
+| pwd | 显示当前工作目录 |
+| **List Directory Content** | 展示文件夹中的内容 |
+| ls | 展示当前文件夹下的文件和子文件夹 |
+| ls -all | 展示当前文件夹下所有文件和子文件夹（包括隐藏文件）以及文件的大小和修改时间 |
+| **File and Directory Management** | 文件与文件夹操作 |
+| cp <file> <dir> | 拷贝文件到目录 |
+| mv <file> <dir> | 移动文件到目录 |
+| mkdir <dir> | 在当前文件夹下创建一个新的叫dir的文件夹 |
+
+> 使用Tab键，可以在终端中让电脑自动补全当前命令或者文件名
+>
+> 在终端的偏好设置中还可以更换喜欢的颜色。
 
 ### 运行第一个Python程序
 
+在终端中运行以下命令，就可以运行 Python 程序了：
+
+```bash
+python example.py
+```
+
+如果当前Mac中还未安装Python3，只有默认的Python2，请使用`example_py2.py`:
+
+```bash
+python example_py2.py
+```
 
 ### 写自己第一个Python程序 Hello World
 
+按照行业惯例，我们学习任何一门编程语言写的第一个程序都是输出`hello, world`，因为这段代码是伟大的丹尼斯·里奇（C语言之父，和肯·汤普森一起开发了Unix操作系统）和布莱恩·柯尼汉（awk语言的发明者）在他们的不朽著作*The C Programming Language*中写的第一段代码。以下代码为使用Python输出"Hello World!"：
 
-### Python代码规范
-参考 Google Python 代码规范
-https://google.github.io/styleguide/pyguide.html
+```python
+>>> print("Hello World!")
+Hello World! 
+```
+
+恭喜你！你现在已经可以运行并写出自己的第一个Python程序了！请继续保持，加油，后面的内容也不会很难！
+
+
 
