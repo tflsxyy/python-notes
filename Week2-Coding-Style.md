@@ -1,6 +1,8 @@
-# Python Development Environment and Style
+# Python Coding Style
 
-### Python代码规范
+
+
+# 一、Python代码规范
 
 保持一种整洁的代码规范，有时候比写更多的程序更为重要。关于 Python 代码规范，可以参考 Google Python 代码规范：
 https://google.github.io/styleguide/pyguide.html
