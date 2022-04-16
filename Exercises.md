@@ -2,6 +2,12 @@
 
 程序分析：可以利用选择法，即从后9个比较过程中，选择一个最小的与第一个元素交换，下次类推，即用第二个元素与后8个进行比较，并进行交换。
 
+<details>
+
+<summary>
+排序代码
+</summary>
+
 ```python
 if __name__ == "__main__":
     N = 10
@@ -14,7 +20,7 @@ if __name__ == "__main__":
     for i in range(N):
         print (l[i])
     print
- 
+
     # 排列10个数字
     for i in range(N - 1):
         min = i
@@ -26,3 +32,4 @@ if __name__ == "__main__":
         print (l[i])
 ```
 
+</details>
