@@ -146,7 +146,7 @@ a, b, c = b, c, a
    
    a = list(range(100000))
    b = tuple(range(100000))
-   print(sys.getsizeof(a), sys.getsizeof(b))    # 900120 800056
+   print(sys.getsizeof(a), sys.getsizeof(b))    # 800056 800040
    
    print(timeit.timeit('[1, 2, 3, 4, 5, 6, 7, 8, 9]'))
    print(timeit.timeit('(1, 2, 3, 4, 5, 6, 7, 8, 9)'))
