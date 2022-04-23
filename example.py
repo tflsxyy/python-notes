@@ -3,8 +3,10 @@
 import os
 
 array = ["聪明机智", "开朗活泼", "勇敢成熟", "可爱漂亮", "努力上进", "天生丽质", "巧笑倩兮", "美目盼兮"]
-print("cyj, 我喜欢你")
+print("cyj, 我喜欢你", end = '')
 
 for i in array:
     a = input()
     print("我喜欢你%s" % (i), end = "")
+
+print()
