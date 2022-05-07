@@ -141,56 +141,32 @@ print(numbers2)    # [144, 64, 3600, 2704]
 
 ### Lambda函数
 
-在使用高阶函数的时候，如果作为参数或者返回值的函数本身非常简单，一行代码就能够完成，那么我们可以使用**Lambda函数**来表示。Python中的Lambda函数是没有的名字函数，所以很多人也把它叫做**匿名函数**，匿名函数只能有一行代码，代码中的表达式产生的运算结果就是这个匿名函数的返回值。上面代码中的`is_even`和`square`函数都只有一行代码，我们可以用Lambda函数来替换掉它们，代码如下所示。
+在使用高阶函数的时候，如果作为参数或者返回值的函数本身非常简单，一行代码就能够完成，那么我们可以使用**Lambda函数**来表示。Python中的Lambda函数是没有的名字函数，所以很多人也把它叫做**匿名函数**，调用Lambda函数就跟调用普通函数一样，python 使用 lambda 来创建匿名函数，也就是不再使用 def 语句这样标准的形式定义一个函数。
 
-```Python
-numbers1 = [35, 12, 8, 99, 60, 52]
-numbers2 = list(map(lambda x: x ** 2, filter(lambda x: x % 2 == 0, numbers1)))
-print(numbers2)    # [144, 64, 3600, 2704]
+匿名函数主要有以下特点：
+
+* lambda 只是一个表达式，函数体比 def 简单很多。
+* lambda 的主体是一个表达式，而不是一个代码块。仅仅能在 lambda 表达式中封装有限的逻辑进去。
+* lambda 函数拥有自己的命名空间，且不能访问自有参数列表之外或全局命名空间里的参数。
+
+示例：
+
+```python
+sum = lambda num1, num2 : num1 + num2;
+
+print(sum(1, 2)) # 3
 ```
 
-通过上面的代码可以看出，定义Lambda函数的关键字是`lambda`，后面跟函数的参数，如果有多个参数用逗号进行分隔；冒号后面的部分就是函数的执行体，通常是一个表达式，表达式的运算结果就是Lambda函数的返回值，不需要写`return` 关键字。
+本质上匿名函数和正常定义函数是一样的：
 
-如果需要使用加减乘除这种简单的二元函数，也可以用Lambda函数来书写，例如调用上面的`calc`函数时，可以通过传入Lambda函数来作为`op`参数的参数值。当然，`op`参数也可以有默认值，例如我们可以用一个代表加法运算的Lambda函数来作为`op`参数的默认值。
+```python
+def sum(num1, num2):
+    return num1 + num2
 
-```Python
-def calc(*args, init_value=0, op=lambda x, y: x + y, **kwargs):
-    result = init_value
-    for arg in args:
-        if type(arg) in (int, float):
-            result = op(result, arg)
-    for value in kwargs.values():
-        if type(value) in (int, float):
-            result = op(result, value)
-    return result
-
-
-# 调用calc函数，使用init_value和op的默认值
-print(calc(1, 2, 3, x=4, y=5))    # 15
-# 调用calc函数，通过lambda函数给op参数赋值
-print(calc(1, 2, 3, x=4, y=5, init_value=1, op=lambda x, y: x * y))    # 120
+print(sum(1, 2)) # 3
 ```
 
-> **提示**：注意上面的代码中的`calc`函数，它同时使用了可变参数、关键字参数、命名关键字参数，其中命名关键字参数要放在可变参数和关键字参数之间，传参时先传入可变参数，关键字参数和命名关键字参数的先后顺序并不重要。
-
-有很多函数在Python中用一行代码就能实现，我们可以用Lambda函数来定义这些函数，调用Lambda函数就跟调用普通函数一样，代码如下所示。
-
-```Python
-import operator, functools
-
-# 一行代码定义求阶乘的函数
-fac = lambda num: functools.reduce(operator.mul, range(1, num + 1), 1)
-# 一行代码定义判断素数的函数
-is_prime = lambda x: x > 1 and all(map(lambda f: x % f, range(2, int(x ** 0.5) + 1)))
-
-# 调用Lambda函数
-print(fac(10))        # 3628800
-print(is_prime(9))    # False
-```
-
-> **提示1**：上面使用的`reduce`函数是Python标准库`functools`模块中的函数，它可以实现对数据的归约操作，通常情况下，**过滤**（filter）、**映射**（map）和**归约**（reduce）是处理数据中非常关键的三个步骤，而Python的标准库也提供了对这三个操作的支持。
->
-> **提示2**：上面使用的`all`函数是Python内置函数，如果传入的序列中所有布尔值都是`True`，`all`函数就返回`True`，否则`all`函数就返回`False`。
+> 注意：**尽管 lambda 表达式允许你定义简单函数，但是它的使用是有限制的。 你只能指定单个表达式，它的值就是最后的返回值。也就是说不能包含其他的语言特性了， 包括多个语句、条件表达式、迭代以及异常处理等等。**
 
 ###  简单的总结
 
