@@ -152,7 +152,7 @@ print(numbers2)    # [144, 64, 3600, 2704]
 示例：
 
 ```python
-sum = lambda num1, num2 : num1 + num2;
+sum = lambda num1, num2 : num1 + num2
 
 print(sum(1, 2)) # 3
 ```
