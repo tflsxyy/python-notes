@@ -71,13 +71,13 @@ if __name__ == "__main__":
         l.append(int(input('输入一个数字:\n')))
     print(l)
 
-#     排列10个数字
+    # 排列10个数字
     for i in range(N - 1):
         min = i
         for j in range(i + 1,N):
             if l[min] > l[j]:
                 l[j], l[min] = l[min], l[j]
-#     l.sort()
+    # l.sort()
     print ('排列之后：')
     print(l)
 ```
