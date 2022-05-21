@@ -200,83 +200,54 @@ stu1.study('Python程序设计')
 
 Python是动态语言，Python中的对象可以动态的添加属性。在面向对象的世界中，**一切皆为对象**，我们定义的类也是对象，所以**类也可以接收消息**。通过继承，我们**可以从已有的类创建新类**，实现对已有类代码的复用。
 
-### 例题
-
-#### 案例1：定义一个类描述数字时钟。
+### 例题:律所信息数据库
 
 ```python
-import time
+class LawFirm(object):
+    """律所信息
+    数据来源 https://en.wikipedia.org/wiki/List_of_largest_China-based_law_firms_by_revenue
+    """
+    
+    def __init__(self, name, founded, lawyers, revenue):
+        self.name = name
+        self.founded = founded
+        self.lawyers = lawyers
+        self.revenue = revenue # in millions
+    
+    def get_name(self):
+        return self.name
+    
+    def get_age(self):
+        import datetime
+        founded = datetime.datetime.strptime(self.founded, "%Y-%m-%d")
+        today = datetime.datetime.now()
+        age = today - founded
+        
+        return age.days // 365, age.days - age.days // 365 * 365
+    
+    def get_lawyers(self):
+        return self.lawyers
+    
+    def get_revenue(self):
+        return self.revenue
+        
+    def revenue_diff(self, another):
+        print(f"{self.name} 与 {another.name} 年收入差值为{abs(self.revenue - another.revenue)}百万元")
+        
+if __name__ == "__main__":
+    
+    law_firm = []
+    law_firm.append(LawFirm("Dacheng", "1992-4-29", 8658, 2360))
+    law_firm.append(LawFirm("King & Wood Mallesons", "2012-3-1", 2762, 1072))
+    law_firm.append(LawFirm("Yingke Law Firm", "2001-8-14", 9000, 445))
+    law_firm.append(LawFirm("Zhong Lun Law Firm", "1993-1-1", 1680, 443))
 
-
-# 定义数字时钟类
-class Clock(object):
-    """数字时钟"""
-
-    def __init__(self, hour=0, minute=0, second=0):
-        """初始化方法
-        :param hour: 时
-        :param minute: 分
-        :param second: 秒
-        """
-        self.hour = hour
-        self.min = minute
-        self.sec = second
-
-    def run(self):
-        """走字"""
-        self.sec += 1
-        if self.sec == 60:
-            self.sec = 0
-            self.min += 1
-            if self.min == 60:
-                self.min = 0
-                self.hour += 1
-                if self.hour == 24:
-                    self.hour = 0
-
-    def show(self):
-        """显示时间"""
-        return f'{self.hour:0>2d}:{self.min:0>2d}:{self.sec:0>2d}'
-
-
-# 创建时钟对象
-clock = Clock(23, 59, 58)
-while True:
-    # 给时钟对象发消息读取时间
-    print(clock.show())
-    # 休眠1秒钟
-    time.sleep(1)
-    # 给时钟对象发消息使其走字
-    clock.run()
-```
-
-#### 案例2：定义一个类描述平面上的点，要求提供计算到另一个点距离的方法。
-
-```python
-class Point(object):
-    """屏面上的点"""
-
-    def __init__(self, x=0, y=0):
-        """初始化方法
-        :param x: 横坐标
-        :param y: 纵坐标
-        """
-        self.x, self.y = x, y
-
-    def distance_to(self, other):
-        """计算与另一个点的距离
-        :param other: 另一个点
-        """
-        dx = self.x - other.x
-        dy = self.y - other.y
-        return (dx * dx + dy * dy) ** 0.5
-
-    def __str__(self):
-        return f'({self.x}, {self.y})'
-
-
-p1 = Point(3, 5)
-p2 = Point(6, 9)
-print(p1, p2)
-print(p1.distance_to(p2))
+    for i in law_firm:
+        print(i.get_name())
+        print(f"创立年限: {i.get_age()[0]}年 {i.get_age()[1]}天")
+        print(f"律师人数: {i.get_lawyers()}")
+        print(f"年收入: {i.get_revenue()}百万元")
+        print()
+        
+    law_firm[0].revenue_diff(law_firm[1])
 ```
