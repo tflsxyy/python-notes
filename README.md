@@ -2,7 +2,11 @@
 
 针对你的法学需求开始写的一份Python笔记。
 
-我在Gitee上添加了新的仓库，国内应该可以直接访问，两个仓库数据一致：https://gitee.com/tflsxyy/python-notes
+我在Gitee上添加了新的仓库，国内应该可以直接访问，两个仓库数据一致：
+
+https://github.com/tflsxyy/python-notes
+
+https://gitee.com/tflsxyy/python-notes
 
 ## References
 
