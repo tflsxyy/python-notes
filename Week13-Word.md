@@ -14,67 +14,47 @@ pip install python-docx
 
 ```Python
 from docx import Document
-from docx.shared import Cm, Pt
-
-from docx.document import Document as Doc
+from docx.shared import Inches
 
 # 创建代表Word文档的Doc对象
-document = Document()  # type: Doc
+document = Document()
 # 添加大标题
-document.add_heading('快快乐乐学Python', 0)
-# 添加段落
-p = document.add_paragraph('Python是一门非常流行的编程语言，它')
-run = p.add_run('简单')
-run.bold = True
-run.font.size = Pt(18)
-p.add_run('而且')
-run = p.add_run('优雅')
-run.font.size = Pt(18)
-run.underline = True
-p.add_run('。')
-
+document.add_heading('Document Title', 0)
+# 添加带样式的段落
+p = document.add_paragraph('A plain paragraph having some ')
+p.add_run('bold').bold = True
+p.add_run(' and some ')
+p.add_run('italic.').italic = True
 # 添加一级标题
 document.add_heading('Heading, level 1', level=1)
-# 添加带样式的段落
+
+# 添加段落
 document.add_paragraph('Intense quote', style='Intense Quote')
 # 添加无序列表
-document.add_paragraph(
-    'first item in unordered list', style='List Bullet'
-)
-document.add_paragraph(
-    'second item in ordered list', style='List Bullet'
-)
+document.add_paragraph('first item in unordered list', style='List Bullet')
 # 添加有序列表
-document.add_paragraph(
-    'first item in ordered list', style='List Number'
-)
-document.add_paragraph(
-    'second item in ordered list', style='List Number'
-)
-
+document.add_paragraph('first item in ordered list', style='List Number')
 # 添加图片（注意路径和图片必须要存在）
-document.add_picture('resources/guido.jpg', width=Cm(5.2))
-
-# 添加分节符
-document.add_section()
+document.add_picture('guido.jpg', width=Inches(1.25))
 
 records = (
-    ('骆昊', '男', '1995-5-5'),
-    ('孙美丽', '女', '1992-2-2')
+    (3, '101', 'Spam'),
+    (7, '422', 'Eggs'),
+    (4, '631', 'Spam, spam, eggs, and spam')
 )
+
 # 添加表格
 table = document.add_table(rows=1, cols=3)
-table.style = 'Dark List'
 hdr_cells = table.rows[0].cells
-hdr_cells[0].text = '姓名'
-hdr_cells[1].text = '性别'
-hdr_cells[2].text = '出生日期'
+hdr_cells[0].text = 'Qty'
+hdr_cells[1].text = 'Id'
+hdr_cells[2].text = 'Desc'
 # 为表格添加行
-for name, sex, birthday in records:
+for qty, id, desc in records:
     row_cells = table.add_row().cells
-    row_cells[0].text = name
-    row_cells[1].text = sex
-    row_cells[2].text = birthday
+    row_cells[0].text = str(qty)
+    row_cells[1].text = id
+    row_cells[2].text = desc
 
 # 添加分页符
 document.add_page_break()
@@ -83,19 +63,13 @@ document.add_page_break()
 document.save('demo.docx')
 ```
 
-> **提示**：上面代码第7行中的注释`# type: Doc`是为了在PyCharm中获得代码补全提示，因为如果不清楚对象具体的数据类型，PyCharm无法在后续代码中给出`Doc`对象的代码补全提示。
-
-执行上面的代码，打开生成的Word文档，效果如下图所示。
-
-<img src="https://gitee.com/jackfrued/mypic/raw/master/20210820002742.png" alt="image-20210820002742341" width="40%">&nbsp;&nbsp;<img src="https://gitee.com/jackfrued/mypic/raw/master/20210820002843.png" alt="image-20210820002843696" width="40%">
-
 对于一个已经存在的Word文件，我们可以通过下面的代码去遍历它所有的段落并获取对应的内容。
 
 ```Python
 from docx import Document
 from docx.document import Document as Doc
 
-doc = Document('resources/离职证明.docx')  # type: Doc
+doc = Document('离职证明.docx')  # type: Doc
 for no, p in enumerate(doc.paragraphs):
     print(no, p.text)
 ```
