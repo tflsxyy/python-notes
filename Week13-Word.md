@@ -136,7 +136,7 @@ employees = [
 # 对列表进行循环遍历，批量生成Word文档 
 for emp_dict in employees:
     # 读取离职证明模板文件
-    doc = Document('resources/离职证明模板.docx')  # type: Doc
+    doc = Document('离职证明模板.docx')  # type: Doc
     # 循环遍历所有段落寻找占位符
     for p in doc.paragraphs:
         if '{' not in p.text:
